@@ -25,7 +25,7 @@ function AddTodo() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ type: "spring", stiffness: 70 }}
-      className="w-full max-w-xl mx-auto mt-12 flex flex-col sm:flex-row items-center gap-3 px-4"
+      className="w-full max-w-xl mx-auto flex flex-col sm:flex-row items-center gap-3 px-4"
       aria-label="Add Todo Form"
     >
       <input
