@@ -2,33 +2,48 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeTodo } from "../features/todo/todoSlice";
 import { X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 function Todo() {
   const todos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
 
   return (
-    <>
-      <ul className="list-numbered">
-        {todos.map((todo) => (
-          <div>
-            <li
-              className="mt-2 flex justify-between items-center py-2"
+    <div className="w-full max-w-xl mx-auto mt-8 px-4">
+      <ul className="space-y-4">
+        <AnimatePresence>
+          {todos.map((todo) => (
+            <motion.li
               key={todo.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, x: 50 }}
+              transition={{ duration: 0.2 }}
+              className="bg-gray-800 rounded-lg px-4 py-3 flex justify-between items-center shadow-md border border-gray-700"
             >
-              <div className="text-white">{todo.text}</div>
+              <span className="text-white text-base">{todo.text}</span>
               <button
                 onClick={() => dispatch(removeTodo(todo.id))}
-                className="text-white cursor-pointer py-1 px-4"
+                className="text-red-400 hover:text-red-600 transition-colors duration-200"
+                aria-label={`Remove ${todo.text}`}
               >
-                <X />
+                <X className="w-5 h-5" />
               </button>
-            </li>
-            <hr />
-          </div>
-        ))}
+            </motion.li>
+          ))}
+        </AnimatePresence>
       </ul>
-    </>
+
+      {todos.length === 0 && (
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-center text-gray-400 mt-8"
+        >
+          No todos yet. Start by adding one above!
+        </motion.p>
+      )}
+    </div>
   );
 }
 

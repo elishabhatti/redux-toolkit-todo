@@ -1,37 +1,52 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../features/todo/todoSlice";
+import { motion } from "framer-motion";
 
 function AddTodo() {
   const [input, setInput] = useState("");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
 
   const addTodoHandler = (e) => {
-    if(input.trim() === "") {
-      alert("Please enter a todo");
+    e.preventDefault();
+    if (input.trim() === "") {
+      setError("Please enter a todo item.");
       return;
     }
-    e.preventDefault();
-    dispatch(addTodo(input));
+    dispatch(addTodo(input.trim()));
     setInput("");
+    setError("");
   };
 
   return (
-    <form
+    <motion.form
       onSubmit={addTodoHandler}
-      className="w-full flex justify-center items-center space-x-2 mt-12"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ type: "spring", stiffness: 70 }}
+      className="w-full max-w-xl mx-auto mt-12 flex flex-col sm:flex-row items-center gap-3 px-4"
+      aria-label="Add Todo Form"
     >
       <input
-        className="w-[80%] px-4 py-2 border-2 border-gray-300 outline-none text-white"
+        className="flex-1 w-full px-4 py-3 rounded-lg border border-gray-400 bg-gray-900 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all duration-200"
         type="text"
-        placeholder="Enter a Todo..."
+        placeholder="What do you want to do?"
         value={input}
         onChange={(e) => setInput(e.target.value)}
+        aria-label="Todo input"
       />
-      <button className="w-[20%] px-4 py-2 border-2 border-white bg-white text-black" type="submit">
+      <button
+        type="submit"
+        className="px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition-all duration-200 w-full sm:w-auto"
+        aria-label="Add Todo Button"
+      >
         Add Todo
       </button>
-    </form>
+      {error && (
+        <p className="w-full text-red-400 text-sm mt-2 text-center sm:text-left">{error}</p>
+      )}
+    </motion.form>
   );
 }
 
