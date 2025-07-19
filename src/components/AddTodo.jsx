@@ -9,18 +9,24 @@ function AddTodo() {
   const addTodoHandler = (e) => {
     e.preventDefault();
     dispatch(addTodo(input));
-    setInput(""); // Clear input after adding todo
+    setInput("");
   };
 
   return (
-    <form onSubmit={addTodoHandler} className="space-x-3 mt-12">
+    <form
+      onSubmit={addTodoHandler}
+      className="w-full flex justify-center items-center space-x-2 mt-12"
+    >
       <input
+        className="w-[80%] px-4 py-2 border border-gray-300 outline-none text-white"
         type="text"
         placeholder="Enter a Todo..."
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
-      <button type="submit">Add Todo</button>
+      <button className="w-[20%] px-4 py-2 bg-white text-black" type="submit">
+        Add Todo
+      </button>
     </form>
   );
 }
