@@ -9,7 +9,7 @@ function Todo() {
   const dispatch = useDispatch();
 
   return (
-    <div className="w-full max-w-xl mx-auto mt-8 px-4">
+    <div className="w-full max-w-xl flex-col mx-auto mt-8 px-4">
       <ul className="space-y-4">
         <AnimatePresence>
           {todos.map((todo) => (
@@ -33,16 +33,17 @@ function Todo() {
           ))}
         </AnimatePresence>
       </ul>
-
-      {todos.length === 0 && (
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="text-center text-gray-400 mt-8"
-        >
-          No todos yet. Start by adding one above!
-        </motion.p>
-      )}
+      <div>
+        {todos.length === 0 && (
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center text-gray-400 mt-8"
+          >
+            No todos yet. Start by adding one above!
+          </motion.p>
+        )}
+      </div>
     </div>
   );
 }

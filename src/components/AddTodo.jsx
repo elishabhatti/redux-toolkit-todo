@@ -43,11 +43,13 @@ function AddTodo() {
       >
         Add Todo
       </button>
-      {error && (
-        <p className="w-full text-red-400 text-sm mt-2 text-center sm:text-left">
-          {error}
-        </p>
-      )}
+      <div>
+        {error && (
+          <p className="w-full text-red-400 text-sm mt-2 text-center sm:text-left">
+            {error}
+          </p>
+        )}
+      </div>
     </motion.form>
   );
 }
