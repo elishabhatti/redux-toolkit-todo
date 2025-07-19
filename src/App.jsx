@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import AddTodo from "./components/AddTodo";
+import Todo from "./components/Todo";
 
 const App = () => {
   return (
-    <div>Learn About Redux Toolkit</div>
-  )
-}
+    <div>
+      <h1>Learn About Redux Toolkit</h1>
+      <AddTodo />
+      <Todo />
+    </div>
+  );
+};
 
-export default App
+export default App;
