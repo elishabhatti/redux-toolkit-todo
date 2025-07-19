@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeTodo } from "../features/todo/todoSlice";
+import { X } from "lucide-react";
 
 function Todo() {
   const todos = useSelector((state) => state.todos);
@@ -12,14 +13,15 @@ function Todo() {
         {todos.map((todo) => (
           <div>
             <li
-              className="mt-4 flex justify-between items-center px-4 py-2"
+              className="mt-2 flex justify-between items-center py-2"
               key={todo.id}
             >
               <div className="text-white">{todo.text}</div>
               <button
                 onClick={() => dispatch(removeTodo(todo.id))}
-                className="text-white bg-red-500 border-0 py-1 px-4 focus:outline-none hover:bg-red-600 rounded text-md"
+                className="text-white cursor-pointer py-1 px-4"
               >
+                <X />
               </button>
             </li>
             <hr />
