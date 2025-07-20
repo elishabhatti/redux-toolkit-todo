@@ -22,7 +22,7 @@ function Todo() {
               className="bg-gray-900 rounded-lg px-4 py-3 flex justify-between items-center shadow-md border border-gray-700"
             >
               <span className="text-white text-base">{todo.text}</span>
-              <div className="space-x-2">
+              <div className="space-x-4">
                 <button
                   onClick={() => dispatch(removeTodo(todo.id))}
                   className="text-red-400 hover:text-red-600 transition-colors duration-200"
@@ -31,7 +31,7 @@ function Todo() {
                   <X className="w-5 h-5" />
                 </button>
                 <button
-                  onClick={() => dispatch(updateTodo(todo.id))}
+                  // onClick={() => dispatch(updateTodo(todo.id, todo.text))}
                   className="text-blue-400 hover:text-blue-600 transition-colors duration-200"
                   aria-label={`Update ${todo.text}`}
                 >
