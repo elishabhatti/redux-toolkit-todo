@@ -19,7 +19,7 @@ function Todo() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, x: 50 }}
               transition={{ duration: 0.2 }}
-              className="bg-gray-800 rounded-lg px-4 py-3 flex justify-between items-center shadow-md border border-gray-700"
+              className="bg-gray-900 rounded-lg px-4 py-3 flex justify-between items-center shadow-md border border-gray-700"
             >
               <span className="text-white text-base">{todo.text}</span>
               <button
