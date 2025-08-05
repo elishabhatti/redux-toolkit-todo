@@ -10,7 +10,7 @@ function Todo() {
 
   return (
     <div className="w-full max-w-xl flex-col mx-auto mt-8 px-4">
-      <ul className="space-y-4">
+      <ul className="space-y-4 my-5">
         <AnimatePresence>
           {todos.map((todo) => (
             <motion.li
