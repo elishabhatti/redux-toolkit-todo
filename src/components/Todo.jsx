@@ -39,7 +39,7 @@ function Todo() {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto px-4 mt-8">
+    <div className="w-full max-w-2xl mx-auto px-4">
       {/* Add Todo Form */}
       <motion.form
         onSubmit={addTodoHandler}
