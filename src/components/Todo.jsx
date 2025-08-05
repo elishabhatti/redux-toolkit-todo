@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeTodo } from "../features/todo/todoSlice";
-import { Edit, X } from "lucide-react";
+import { Check, Edit, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 function Todo() {
@@ -35,7 +35,7 @@ function Todo() {
                   className="text-red-400 hover:text-red-600 transition-colors duration-200"
                   aria-label={`Completed ${todo.text}`}
                 >
-                  <X className="w-5 h-5" />
+                  <Check className="w-5 h-5" />
                 </button>
                 <button
                   // onClick={() => dispatch(updateTodo(todo.id, todo.text))}
