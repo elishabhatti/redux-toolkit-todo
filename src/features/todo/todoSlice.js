@@ -21,6 +21,7 @@ export const todoSlice = createSlice({
       const todo = {
         id: nanoid(),
         text: action.payload,
+        isCompleted: false,
       };
       state.todos.push(todo);
       saveTodos(state.todos); // Save updated list
