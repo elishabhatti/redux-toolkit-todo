@@ -1,5 +1,4 @@
 import React from "react";
-import AddTodo from "./components/AddTodo";
 import Todo from "./components/Todo";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
@@ -26,7 +25,6 @@ const App = () => {
         <div className="flex flex-col">
           <div className="flex justify-end mb-2 mr-5 font-bold text-lg">Total Todos: {todos.length}</div>
           <div>
-            <AddTodo />
             <Todo />
           </div>
         </div>
