@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { removeTodo } from "../features/todo/todoSlice";
+import { removeTodo, markAsCompleted } from "../features/todo/todoSlice";
 import { Check, Edit, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 

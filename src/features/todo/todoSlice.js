@@ -33,9 +33,12 @@ export const todoSlice = createSlice({
       state.todos = [];
       saveTodos(state.todos);
     },
+
+    markAsCompleted: (state) => {},
   },
 });
 
-export const { addTodo, removeTodo, removeAllTodos} = todoSlice.actions;
+export const { addTodo, removeTodo, removeAllTodos, markAsCompleted } =
+  todoSlice.actions;
 
 export default todoSlice.reducer;
