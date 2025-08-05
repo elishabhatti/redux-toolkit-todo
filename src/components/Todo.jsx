@@ -31,6 +31,13 @@ function Todo() {
                   <X className="w-5 h-5" />
                 </button>
                 <button
+                  onClick={() => dispatch(markAsCompleted(todo.id))}
+                  className="text-red-400 hover:text-red-600 transition-colors duration-200"
+                  aria-label={`Completed ${todo.text}`}
+                >
+                  <X className="w-5 h-5" />
+                </button>
+                <button
                   // onClick={() => dispatch(updateTodo(todo.id, todo.text))}
                   className="text-blue-400 hover:text-blue-600 transition-colors duration-200"
                   aria-label={`Update ${todo.text}`}
