@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-950 to-gray-900 text-gray-50 flex flex-col items-center pt-30 px-4">
+    <div className="min-h-screen bg-gradient-to-b from-gray-950 to-gray-900 text-gray-50 flex flex-col items-center pt-15 px-4">
       <motion.h1
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
