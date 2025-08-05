@@ -34,7 +34,11 @@ export const todoSlice = createSlice({
       saveTodos(state.todos);
     },
 
-    markAsCompleted: (state) => {},
+    markAsCompleted: (state, action) => {
+      state.todos = state.todos.map((todo) =>
+        todo.id === action.payload ? { ...todo, isCompleted: true } : todo
+      );
+    },
   },
 });
 
