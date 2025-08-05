@@ -19,7 +19,9 @@ function Todo() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, x: 50 }}
               transition={{ duration: 0.2 }}
-              className={` ${todo.isCompleted ? "line-through": ""} bg-gray-900 rounded-lg px-4 py-3 flex justify-between items-center shadow-md border border-gray-700`}
+              className={` ${
+                todo.isCompleted ? "line-through" : ""
+              } bg-gray-900 rounded-lg px-4 py-3 flex justify-between items-center shadow-md border border-gray-700`}
             >
               <span className="text-white text-base">{todo.text}</span>
               <div className="space-x-4">
