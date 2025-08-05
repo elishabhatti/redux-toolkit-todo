@@ -32,7 +32,7 @@ function Todo() {
                 </button>
                 <button
                   onClick={() => dispatch(markAsCompleted(todo.id))}
-                  className="text-red-400 hover:text-red-600 transition-colors duration-200"
+                  className="text-green-400 hover:text-green-600 transition-colors duration-200"
                   aria-label={`Completed ${todo.text}`}
                 >
                   <Check className="w-5 h-5" />
