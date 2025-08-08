@@ -84,7 +84,7 @@ function Todo() {
       <div className="w-full max-w-xl flex-col mx-auto mt-8">
         <ul className="space-y-4 my-5">
           <AnimatePresence>
-            {todos.map((todo) => (
+            {[...todos].reverse().map((todo) => (
               <motion.li
                 key={todo.id}
                 initial={{ opacity: 0, y: 10 }}
