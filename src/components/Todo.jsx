@@ -41,6 +41,15 @@ function Todo() {
     }
   };
 
+  const handleRemoveTodo = (id) => {
+    const confirmed = confirm("Are you sure you want to delete this todo?");
+    if (confirmed) {
+      dispatch(removeTodo(id));
+      setInput("");
+      setError("");
+    }
+  };
+
   return (
     <div className="w-full max-w-2xl mx-auto px-4">
       {/* Add Todo Form */}
@@ -101,7 +110,7 @@ function Todo() {
                 <span className="text-white text-base">{todo.text}</span>
                 <div className="space-x-4">
                   <button
-                    onClick={() => dispatch(removeTodo(todo.id))}
+                    onClick={() => dispatch(() => handleRemoveTodo(todo.id))}
                     className="text-red-400 hover:text-red-600 transition-colors duration-200"
                     aria-label={`Remove ${todo.text}`}
                   >
