@@ -107,7 +107,11 @@ function Todo() {
                   todo.isCompleted ? "line-through" : ""
                 } bg-gray-900 rounded-lg px-4 py-3 flex justify-between items-center shadow-md border border-gray-700`}
               >
-                <span className="text-white text-base">{todo.text}</span>
+                <span className="text-white text-base">
+                  {todo.text.length > 30
+                    ? todo.text.slice(0, 30) + "..."
+                    : todo.text}
+                </span>
                 <div className="space-x-4">
                   <button
                     onClick={() => dispatch(() => handleRemoveTodo(todo.id))}
