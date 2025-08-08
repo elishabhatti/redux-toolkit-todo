@@ -12,6 +12,7 @@ import { Check, Edit, X } from "lucide-react";
 function Todo() {
   const [input, setInput] = useState("");
   const [error, setError] = useState("");
+  const [editingId, setEditingId] = useState("");
   const todos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
 
@@ -153,6 +154,10 @@ function Todo() {
                       <Check className="w-5 h-5" />
                     </button>
                     <button
+                      onClick={() => {
+                        setEditingId(todo.id);
+                        setInput(todo.text);
+                      }}
                       className="text-blue-400 hover:text-blue-600 transition-colors duration-200"
                       aria-label={`Update ${todo.text}`}
                     >
