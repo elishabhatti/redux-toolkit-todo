@@ -96,46 +96,52 @@ function Todo() {
       <div className="w-full max-w-xl flex-col mx-auto mt-8">
         <ul className="space-y-4 my-5">
           <AnimatePresence>
-            {[...todos].reverse().map((todo) => (
-              <motion.li
-                key={todo.id}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, x: 50 }}
-                transition={{ duration: 0.2 }}
-                className={`${
-                  todo.isCompleted ? "line-through" : ""
-                } bg-gray-900 rounded-lg px-4 py-3 flex justify-between items-center shadow-md border border-gray-700`}
-              >
-                <span className="text-white text-base">
-                  {todo.text.length > 30
-                    ? todo.text.slice(0, 30) + "..."
-                    : todo.text}
-                </span>
-                <div className="space-x-4">
-                  <button
-                    onClick={() => dispatch(() => handleRemoveTodo(todo.id))}
-                    className="text-red-400 hover:text-red-600 transition-colors duration-200"
-                    aria-label={`Remove ${todo.text}`}
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
-                  <button
-                    onClick={() => dispatch(markAsCompleted(todo.id))}
-                    className="text-green-400 hover:text-green-600 transition-colors duration-200"
-                    aria-label={`Completed ${todo.text}`}
-                  >
-                    <Check className="w-5 h-5" />
-                  </button>
-                  <button
-                    className="text-blue-400 hover:text-blue-600 transition-colors duration-200"
-                    aria-label={`Update ${todo.text}`}
-                  >
-                    <Edit className="w-5 h-5" />
-                  </button>
-                </div>
-              </motion.li>
-            ))}
+            {[...todos]
+              .reverse()
+              .sort((a, b) => {
+                if (a.isCompleted === b.isCompleted) return b.id - a.id;
+                return a.isCompleted - b.isCompleted;
+              })
+              .map((todo) => (
+                <motion.li
+                  key={todo.id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, x: 50 }}
+                  transition={{ duration: 0.2 }}
+                  className={`${
+                    todo.isCompleted ? "line-through" : ""
+                  } bg-gray-900 rounded-lg px-4 py-3 flex justify-between items-center shadow-md border border-gray-700`}
+                >
+                  <span className="text-white text-base">
+                    {todo.text.length > 30
+                      ? todo.text.slice(0, 30) + "..."
+                      : todo.text}
+                  </span>
+                  <div className="space-x-4">
+                    <button
+                      onClick={() => dispatch(() => handleRemoveTodo(todo.id))}
+                      className="text-red-400 hover:text-red-600 transition-colors duration-200"
+                      aria-label={`Remove ${todo.text}`}
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={() => dispatch(markAsCompleted(todo.id))}
+                      className="text-green-400 hover:text-green-600 transition-colors duration-200"
+                      aria-label={`Completed ${todo.text}`}
+                    >
+                      <Check className="w-5 h-5" />
+                    </button>
+                    <button
+                      className="text-blue-400 hover:text-blue-600 transition-colors duration-200"
+                      aria-label={`Update ${todo.text}`}
+                    >
+                      <Edit className="w-5 h-5" />
+                    </button>
+                  </div>
+                </motion.li>
+              ))}
           </AnimatePresence>
         </ul>
         {todos.length === 0 && (
