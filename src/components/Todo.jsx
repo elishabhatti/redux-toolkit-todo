@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   addTodo,
@@ -14,6 +14,25 @@ function Todo() {
   const [error, setError] = useState("");
   const todos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = Date.now();
+      const tenSeconds = 10 * 1000;
+
+      todos.forEach((todo) => {
+        if (
+          todo.isCompleted &&
+          todo.completedAt &&
+          now - todo.completedAt > tenSeconds
+        ) {
+          dispatch(removeTodo(todo.id));
+        }
+      });
+    }, 1000); // check every 1 second
+
+    return () => clearInterval(interval); // cleanup on unmount
+  }, [todos, dispatch]);
 
   const addTodoHandler = (e) => {
     e.preventDefault();

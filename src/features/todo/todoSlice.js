@@ -26,7 +26,7 @@ export const todoSlice = createSlice({
       state.todos.push(todo);
       saveTodos(state.todos); // Save updated list
     },
-    
+
     removeTodo: (state, action) => {
       state.todos = state.todos.filter((todo) => todo.id !== action.payload);
       saveTodos(state.todos);
@@ -40,7 +40,11 @@ export const todoSlice = createSlice({
     markAsCompleted: (state, action) => {
       state.todos = state.todos.map((todo) =>
         todo.id === action.payload
-          ? { ...todo, isCompleted: !todo.isCompleted }
+          ? {
+              ...todo,
+              isCompleted: !todo.isCompleted,
+              completedAt: !todo.isCompleted ? Date.now() : null, // set time or clear it
+            }
           : todo
       );
     },
