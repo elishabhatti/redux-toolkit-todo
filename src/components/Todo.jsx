@@ -5,6 +5,7 @@ import {
   removeAllTodos,
   removeTodo,
   markAsCompleted,
+  updateTodo,
 } from "../features/todo/todoSlice";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Edit, X } from "lucide-react";
@@ -44,7 +45,13 @@ function Todo() {
     }
 
     try {
-      dispatch(addTodo(trimmed));
+      if(editingId) {
+        dispatch(updateTodo({id: editingId, text:trimmed}))
+        setEditingId(null)
+      }else {
+
+        dispatch(addTodo(trimmed));
+      }
       setInput("");
       setError("");
     } catch (err) {

@@ -48,10 +48,11 @@ export const todoSlice = createSlice({
           : todo
       );
     },
+  
   },
 });
 
-export const { addTodo, removeTodo, removeAllTodos, markAsCompleted } =
+export const { addTodo, removeTodo, removeAllTodos, markAsCompleted, updateTodo } =
   todoSlice.actions;
 
 export default todoSlice.reducer;
