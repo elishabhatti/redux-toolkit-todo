@@ -47,13 +47,14 @@ export const todoSlice = createSlice({
             }
           : todo
       );
-      saveTodos(state.todos); 
+      saveTodos(state.todos);
     },
     updateTodo: (state, action) => {
       const { id, text } = action.payload;
       state.todos = state.todos.map((todo) =>
         todo.id === id ? { ...todo, text } : todo
       );
+      saveTodos(state.todos);
     },
   },
 });
