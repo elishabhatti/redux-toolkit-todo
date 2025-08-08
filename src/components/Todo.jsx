@@ -33,9 +33,12 @@ function Todo() {
   };
 
   const handleRemoveAllTodos = () => {
-    dispatch(removeAllTodos());
-    setInput("");
-    setError("");
+    const confirmed = confirm("Are you sure you want to delete all the Todos?");
+    if (confirmed) {
+      dispatch(removeAllTodos());
+      setInput("");
+      setError("");
+    }
   };
 
   return (
