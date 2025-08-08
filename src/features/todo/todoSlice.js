@@ -47,6 +47,7 @@ export const todoSlice = createSlice({
             }
           : todo
       );
+      saveTodos(state.todos); 
     },
     updateTodo: (state, action) => {
       const { id, text } = action.payload;
