@@ -45,14 +45,14 @@ export const todoSlice = createSlice({
               isCompleted: !todo.isCompleted,
               completedAt: !todo.isCompleted ? Date.now() : null, // set time or clear it
             }
-          : todo
+          : todo,
       );
       saveTodos(state.todos);
     },
     updateTodo: (state, action) => {
       const { id, text } = action.payload;
       state.todos = state.todos.map((todo) =>
-        todo.id === id ? { ...todo, text } : todo
+        todo.id === id ? { ...todo, text } : todo,
       );
       saveTodos(state.todos);
     },

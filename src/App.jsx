@@ -23,7 +23,9 @@ const App = () => {
         className="w-full max-w-2xl"
       >
         <div className="flex flex-col">
-          <div className="flex justify-end mb-2 mr-5 font-bold text-lg">Total Todos: {todos.length}</div>
+          <div className="flex justify-end mb-2 mr-5 font-bold text-lg">
+            Total Todos: {todos.length}
+          </div>
           <div>
             <Todo />
           </div>

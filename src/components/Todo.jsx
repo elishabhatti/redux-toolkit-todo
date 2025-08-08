@@ -45,11 +45,10 @@ function Todo() {
     }
 
     try {
-      if(editingId) {
-        dispatch(updateTodo({id: editingId, text:trimmed}))
-        setEditingId(null)
-      }else {
-
+      if (editingId) {
+        dispatch(updateTodo({ id: editingId, text: trimmed }));
+        setEditingId(null);
+      } else {
         dispatch(addTodo(trimmed));
       }
       setInput("");
