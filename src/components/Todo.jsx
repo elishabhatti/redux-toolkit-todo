@@ -20,13 +20,12 @@ function Todo() {
   useEffect(() => {
     const interval = setInterval(() => {
       const now = Date.now();
-      const tenSeconds = 10 * 1000;
-
+      const twelveHours = 12 * 60 * 60 * 1000;
       todos.forEach((todo) => {
         if (
           todo.isCompleted &&
           todo.completedAt &&
-          now - todo.completedAt > tenSeconds
+          now - todo.completedAt > twelveHours
         ) {
           dispatch(removeTodo(todo.id));
         }
