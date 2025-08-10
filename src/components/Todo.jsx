@@ -141,7 +141,7 @@ function Todo() {
                   <span className="text-white text-base">
                     {todo.text.length > 30
                       ? todo.text.slice(0, 30) + "..."
-                      : todo.text}
+                      : todo.text.charAt(0).toUpperCase() + todo.text.slice(1)}
                   </span>
                   <div className="space-x-4">
                     <button
